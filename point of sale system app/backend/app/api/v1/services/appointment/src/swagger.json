@@ -1,0 +1,88 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Appointment Service API"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/appointments": {
+            "get": {
+                "summary": "Get all appointments",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Appointment"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Create a new appointment",
+                "parameters": [
+                    {
+                        "name": "appointment",
+                        "in": "body",
+                        "description": "Appointment object",
+                        "schema": {
+                            "$ref": "#/definitions/NewAppointment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/Appointment"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Server Error"
+                    }
+                }
+            },
+            "/appointments/{id}": {
+                "get": {
+                    "summary": "Get appointment by ID",
+                    "parameters": [
+                        {
+                            "name": "id",
+                            "in": "path",
+                            "description": "Appointment ID",
+                            "required": true,
+                            "type": "string"
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Success",
+                            "schema": {
+                                "$ref": "#/definitions/Appointment"
+                            }
+                        },
+                        "404": {
+                            "description": "Not Found"
+                        },
+                        "500": {
+                            "description": "Server Error"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
