@@ -125,3 +125,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+/point of sale system app/styleProject/node_modules/
